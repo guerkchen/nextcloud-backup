@@ -9,7 +9,8 @@ if [ $full_backup_count > 2 ]; then
   for filename in backup/*; do
     filename_date=$(busybox date -D "%F_%H-%M-%S" -d ${filename:14:19} +%s)
     if (($last_valid_backup > $filename_date)); then
-      echo "i would delete $filename"
+      echo "delete $filename"
+      rm -f $filename
     fi
   done   
 fi
